@@ -106,13 +106,22 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             padding: 1rem 0;
-            min-height: 480px;
+            min-height: 520px;
             /* Reserve space for plan cards - prevents CLS */
         }
 
         .plan-card {
             min-width: 280px;
-            min-height: 450px;
+            min-height: 500px;
+            flex-shrink: 0;
+        }
+
+        .loading-state {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 500px;
         }
     </style>
 
