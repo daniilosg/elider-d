@@ -1,0 +1,16 @@
+{
+    "name": "desktop-lp",
+    "version": "1.0.0",
+    "description": "Desktop Internet Landing Page",
+    "scripts": {
+        "build": "npm run build:css && npm run build:js",
+        "build:css": "npx cssnano style.css style.min.css",
+        "build:js": "npx terser script.js -o script.min.js -c -m",
+        "dev": "npx live-server --port=3000"
+    },
+    "devDependencies": {
+        "cssnano": "^6.0.0",
+        "cssnano-cli": "^1.0.5",
+        "terser": "^5.30.0"
+    }
+}
