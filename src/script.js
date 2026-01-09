@@ -101,10 +101,8 @@ function createPlanCard(plan, index, allPlans) {
     });
 
     let appsHtml = '';
-    appIcons.forEach((iconObj, idx) => {
-        // First app icon gets fetchpriority="high" for LCP optimization
-        const priority = idx === 0 ? 'fetchpriority="high"' : 'loading="lazy"';
-        appsHtml += `<img src="${iconObj.src}" alt="${iconObj.name}" title="${iconObj.name}" width="32" height="32" ${priority}>`;
+    appIcons.forEach(iconObj => {
+        appsHtml += `<img src="${iconObj.src}" alt="${iconObj.name}" title="${iconObj.name}" width="32" height="32" loading="lazy">`;
     });
 
     // Benefícios HTML
