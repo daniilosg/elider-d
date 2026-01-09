@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoção Desktop Internet - Desktop Internet</title>
+    <meta name="description"
+        content="Confira os melhores planos de internet fibra óptica da Desktop. Alta velocidade, estabilidade e Wi-Fi 6 incluso. Assine já!">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://n8nwb.crelo.net">
+    <link rel="dns-prefetch" href="https://n8nwb.crelo.net">
+
+    <!-- Critical CSS (above the fold) -->
+    <style>
+        :root {
+            --primary-color: #b90000;
+            --primary-dark: #8a0000;
+            --warning: #ffc107;
+            --white: #fff;
+            --light-bg: #f8f9fa;
+            --text-color: #212529;
+            --radius: 1rem;
+            --shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+            --container-width: 1140px;
+            --spacing-unit: 1rem
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--light-bg)
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit)
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: .75rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .brand h1 {
+            color: var(--warning);
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 2rem 0 3rem;
+            color: var(--white);
+            text-align: center
+        }
+
+        .hero-title h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: .5rem
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0
+        }
+    </style>
+
+    <!-- Main CSS (non-blocking) -->
+    <link rel="stylesheet" href="style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="style.css">
+    </noscript>
+
+    <!-- Material Symbols (async) -->
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+    </noscript>
+
+    <!-- Google Fonts (with display=swap already) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="brand">
+                <img src="assets/logo.svg" alt="Desktop Internet" width="150" height="30">
+                <h1>PROMOÇÃO EXCLUSIVA</h1>
+            </div>
+            <div class="city-select">
+                <select id="citySelect" aria-label="Selecione sua cidade">
+                    <option value="" selected>Selecione sua cidade</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-title">
+                <h2>Planos Desktop</h2>
+                <p>Escolha o plano ideal para sua cidade</p>
+            </div>
+
+            <!-- Cards Container (CSS Scroll Snap) -->
+            <div class="cards-container" id="plansContainer">
+                <div class="loading-state"
+                    style="text-align: center; width: 100%; padding: 2rem; color: var(--primary-color);">
+                    <p>Carregando planos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages">
+        <div class="container">
+            <h3 class="section-title">Vantagens Desktop Internet Fibra</h3>
+            <div class="grid-advantages">
+                <div class="advantage-card">
+                    <div class="icon-circle icon-wifi">
+                        <span class="material-symbols-outlined">wifi</span>
+                    </div>
+                    <h4>O Wi-Fi da Desktop é Gratuito</h4>
+                    <p>Com a Desktop Fibra você se conecta em todos os cantos da sua casa pelo sinal Wi-Fi.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon-circle icon-verified">
+                        <span class="material-symbols-outlined">verified_user</span>
+                    </div>
+                    <h4>Conexão de internet 100% Fibra</h4>
+                    <p>A Fibra Óptica é a tecnologia que oferece a conexão de internet mais rápida do mercado!</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon-circle icon-phone">
+                        <span class="material-symbols-outlined">phone</span>
+                    </div>
+                    <h4>Telefone Fixo incluso no plano</h4>
+                    <p>Junto com a internet você leva uma linha de telefone fixa gratuitamente.</p>
+                </div>
+                <div class="advantage-card">
+                    <div class="icon-circle icon-unlimited">
+                        <span class="material-symbols-outlined">all_inclusive</span>
+                    </div>
+                    <h4>Planos com internet ilimitada</h4>
+                    <p>Navegue, assista filmes, jogue online e faça downloads sem preocupação de franquia!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h3 class="section-title">Dúvidas Frequentes</h3>
+            <div class="faq-list">
+                <details>
+                    <summary>Desktop Internet é boa? <span class="arrow"></span></summary>
+                    <p>Sim, a Desktop Internet é aprovada pela Anatel e utiliza tecnologia de fibra ótica, garantindo
+                        estabilidade e alta velocidade.</p>
+                </details>
+                <details>
+                    <summary>Os planos desktop são 100% fibra? <span class="arrow"></span></summary>
+                    <p>Todos os planos desktop utilizam fibra ótica de ponta a ponta, proporcionando máxima qualidade.
+                    </p>
+                </details>
+                <details>
+                    <summary>Como faço para assinar Desktop? <span class="arrow"></span></summary>
+                    <p>Basta nos chamar pelo Whatsapp Desktop ou pelo 0800 103 2121, escolher seu plano, verificar a
+                        cobertura e preencher o formulário de adesão.</p>
+                </details>
+                <details>
+                    <summary>A internet da Desktop é ilimitada? <span class="arrow"></span></summary>
+                    <p>Sim, todos os planos ofereceram internet ilimitada, sem restrições de franquia.</p>
+                </details>
+                <details>
+                    <summary>Qual o número de contato para suporte? <span class="arrow"></span></summary>
+                    <p>Você pode ligar para o SAC pelo telefone oficial, disponível no site, ou enviar uma mensagem via
+                        WhatsApp.</p>
+                </details>
+                <details>
+                    <summary>Posso fazer upgrade de plano? <span class="arrow"></span></summary>
+                    <p>Sim, você pode solicitar o upgrade diretamente pelo portal do cliente ou pelo atendimento.</p>
+                </details>
+                <details>
+                    <summary>A instalação tem custo adicional? <span class="arrow"></span></summary>
+                    <p>A instalação pode variar conforme a região e o plano escolhido, mas geralmente está inclusa.</p>
+                </details>
+                <details>
+                    <summary>A Desktop oferece Wi-Fi grátis? <span class="arrow"></span></summary>
+                    <p>Sim, todos os planos incluem modem Wi-Fi gratuito.</p>
+                </details>
+                <details>
+                    <summary>Posso usar a internet Desktop para jogos online? <span class="arrow"></span></summary>
+                    <p>Sim, a conexão é ideal para gamers, oferecendo baixa latência e estabilidade.</p>
+                </details>
+                <details>
+                    <summary>Desktop e Desktop Sigmanet são a mesma empresa? <span class="arrow"></span></summary>
+                    <p>Sim, a Sigmanet foi incorporada à Desktop, ampliando a cobertura e a qualidade do serviço.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <img src="assets/logo.svg" alt="Desktop Internet" width="200">
+                <p>Desktop Internet - São José do Rio Preto</p>
+            </div>
+            <div class="footer-right">
+                <h5>ATENDIMENTO AO CLIENTE</h5>
+                <p class="phone">0800 103 2121</p>
+                <p class="hours">Seg. à Sáb: 9h às 22h | Dom. e Feriados: 9h às 15h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2016-2026 Desktop Internet. Site desenvolvido e publicado por Elider Conecta Vendas LTDA.</p>
+        </div>
+    </footer>
+
+    <!-- Float WhatsApp -->
+    <button type="button" class="whatsapp-float open-modal-btn">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.488">
+            </path>
+        </svg>
+    </button>
+
+    <!-- Support/Sales Modal -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Como podemos ajudar?</h2>
+                <button id="btnClose" type="button" class="close-btn">X</button>
+            </div>
+            <div class="modal-body">
+                <button id="btnNovoPlano" type="button" class="modal-option">
+                    <span class="material-symbols-outlined option-icon">sensors</span>
+                    <div class="option-text">
+                        <strong>CONTRATAR NOVO PLANO</strong>
+                        <div class="small-text">Quero assinar um plano Desktop</div>
+                    </div>
+                </button>
+                <button id="btnSouCliente" type="button" class="modal-option">
+                    <span class="material-symbols-outlined option-icon">flag</span>
+                    <div class="option-text">
+                        <strong>JÁ SOU CLIENTE</strong>
+                        <div class="small-text">Preciso de suporte, 2ª via ou atendimento</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

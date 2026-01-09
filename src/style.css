@@ -1,0 +1,671 @@
+/* ... Previous styles ... */
+/* Stick to the existing style.css content and append/modify as needed. 
+   Since I am overwriting, I should include the FULL content or use append. 
+   I will use replace_file_content to append to style.css or overwrite if I have the full content in memory (I do, from view_file, but it was truncated).
+   I'll just append the new styles to the end of style.css using read_file/append logic or just a big replace.
+   Actually, I'll use read_file to get the full style.css first to be safe, then overwrite it with the new distinct additions.
+   
+   Wait, I already viewed style.css in Step 16 (lines 380-509). I need the beginning too?
+   I wrote it in Step 10. I have the full content in my context memory from Step 10.
+   Top is standard variables.
+   I will just Append the specific new CSS for the float button.
+*/
+
+:root {
+    --primary-color: #b90000;
+    --primary-dark: #8a0000;
+    --secondary-color: #6c757d;
+    --text-color: #212529;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --success: #198754;
+    --whatsapp-green: #25D366;
+
+    --spacing-unit: 1rem;
+    --container-width: 1140px;
+
+    --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --radius: 1rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    /* padding-bottom: 80px; Removed fixed bar padding */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Utilities */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--warning);
+    color: #000;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    width: 100%;
+}
+
+.btn-outline:hover {
+    border-color: var(--success);
+    color: var(--success);
+}
+
+.btn-success {
+    background-color: var(--whatsapp-green);
+    color: white;
+    width: 100%;
+}
+
+.btn-success:hover {
+    background-color: #128C7E;
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.city-select select {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    min-width: 200px;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 3rem 0 2rem;
+    text-align: center;
+}
+
+.hero-title {
+    margin-bottom: 3rem;
+}
+
+.hero-title h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+/* Cards (Carousel on Mobile) */
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    /* spacing for mobile scroll */
+    padding-right: 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 992px) {
+    .cards-container {
+        justify-content: center;
+        overflow-x: visible;
+        padding-left: 0;
+    }
+}
+
+.plan-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 2rem;
+    min-width: 300px;
+    /* Fixed width for scrolling */
+    flex: 0 0 320px;
+    scroll-snap-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+.card-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--warning);
+    padding: 0.25rem 1rem;
+    border-bottom-right-radius: var(--radius);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.plan-speed {
+    color: var(--danger);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.price-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-value small {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.price-old {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    text-decoration: line-through;
+    margin: 0.5rem 0;
+}
+
+.badge-off {
+    background-color: #d1e7dd;
+    color: var(--success);
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.8em;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+.price-condition {
+    display: inline-block;
+    background-color: #fff3cd;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.plan-apps {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.apps-label {
+    color: var(--danger);
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.apps-icons {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.apps-icons img {
+    background: white;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.app-more {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--warning);
+    color: var(--warning);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.plan-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Advantages */
+.advantages {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: 3rem;
+}
+
+.grid-advantages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.advantage-card {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle .material-symbols-outlined {
+    font-size: 40px;
+}
+
+.icon-wifi {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #d97706;
+}
+
+.icon-verified {
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    color: #0d6efd;
+}
+
+.icon-phone {
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #198754;
+}
+
+.icon-unlimited {
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    color: #6f42c1;
+}
+
+.advantage-card h4 {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.advantage-card p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* FAQ */
+.faq {
+    padding: 4rem 0;
+    background-color: var(--light-bg);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+details {
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+summary {
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    /* Hide default triangle */
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.arrow::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+details[open] .arrow::after {
+    content: '-';
+}
+
+details p {
+    padding: 0 1.25rem 1.25rem;
+    color: var(--secondary-color);
+    border-top: 1px solid #f0f0f0;
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (min-width: 768px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footer-right h5 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.footer-right .phone {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.footer-right .hours {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: var(--whatsapp-green);
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Animations */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* New Solution Choice Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    /* hidden by default */
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 42rem;
+    /* approx 2xl */
+    background-color: white;
+    color: #0f172a;
+    /* slate-900 */
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: inherit;
+    padding: 0.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-option {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.modal-option:hover {
+    background-color: #f8fafc;
+    border-color: var(--primary-color);
+}
+
+.option-icon {
+    font-size: 2.5rem !important;
+    color: #0f172a;
+}
+
+.modal-option strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+    color: #0f172a;
+}
+
+.modal-option .small-text {
+    font-size: 0.875rem;
+    color: #475569;
+    /* slate-600 */
+}
+
+/* Ensure buttons look clickable */
+button.whatsapp-float,
+button.open-modal-btn {
+    cursor: pointer;
+    border: none;
+}
+
+button.whatsapp-float {
+    background-color: var(--whatsapp-green);
+    /* Ensure color stays */
+    padding: 0;
+}
